@@ -21,7 +21,7 @@ namespace DockerArtisan
 
         private void RetrieveContainers()
         {
-            using (var output = Form1.cmdExecute("docker", "ps -a --format '{{.Names}}'"))
+            using (var output = Form1.CmdExecute("docker", "ps -a --format '{{.Names}}'"))
             {
                 string line;
                 while ((line = output.ReadLine()) != null)
@@ -39,7 +39,7 @@ namespace DockerArtisan
             this.container = comboBox1.Text;
             this.path = ConfigurationSettings.AppSettings.Get("path");
       
-            using (var reader = Form1.cmdExecute("docker", "exec " + container + " php " + path + "artisan list"))
+            using (var reader = Form1.CmdExecute("docker", "exec " + container + " php " + path + "artisan list"))
             {
                 string cmdOutput = reader.ReadToEnd();
 
@@ -80,10 +80,10 @@ namespace DockerArtisan
                 arg = " " + textBox1.Text;
             }
   
-            MessageBox.Show(Form1.cmdExecute("docker", "exec " + container + " php " + path + "artisan " + comboBox2.Text + arg).ReadToEnd());
+            MessageBox.Show(Form1.CmdExecute("docker", "exec " + container + " php " + path + "artisan " + comboBox2.Text + arg).ReadToEnd());
         }
 
-        private static System.IO.StreamReader cmdExecute(string app, string arguments)
+        private static System.IO.StreamReader CmdExecute(string app, string arguments)
         {
             System.Diagnostics.Process pProcess = new System.Diagnostics.Process();
             pProcess.StartInfo.FileName = app;
