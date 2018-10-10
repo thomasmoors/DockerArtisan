@@ -1,4 +1,4 @@
-Execute artisan commands inside your docker container through a GUI
+Execute [artisan](https://laravel.com/docs/master/artisan) commands inside your docker container through a GUI
 Windows only
 
 # Instructions
