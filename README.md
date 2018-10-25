@@ -20,7 +20,7 @@ Windows only
 4. Optionally add additional arguments in the textbox.
 5. Press "RUN" and enjoy.
 
-![Screenshot](https://i.imgur.com/VGx6cYJ.png)
+![Screenshot](https://i.imgur.com/t0NnIkG.png)
 
 
-The binary (.exe) can be downloaded here: https://github.com/thomasmoors/DockerArtisan/releases/download/v1.0.0/DockerArtisan.zip
+The binary (.exe) can be downloaded here: https://github.com/thomasmoors/DockerArtisan/releases/download/v1.0.1/DockerArtisan.zip
