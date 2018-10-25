@@ -18,7 +18,7 @@ namespace DockerArtisan
 
         public void RetrieveContainers(ComboBox comboBox)
         {
-            using (var output = Cmd.Execute("docker", "ps -a --format '{{.Names}}'"))
+            using (var output = Cmd.Execute("docker", "ps --format '{{.Names}}'"))
             {
                 string line;
                 while ((line = output.ReadLine()) != null)
@@ -66,12 +66,14 @@ namespace DockerArtisan
 
         public string SearchArtisanPath()
         {
-            using (var output = Cmd.Execute("docker", "exec "+ this.container +" /bin/bash -c ' find / -type f -name artisan 2>&1 | grep -v \"Permission denied\"'"))
+            string command = "exec " + this.container + @" /bin/bash -c ""find / -type f -name artisan 2>&1 | grep -v ""Permission denied"" "" ";
+            using (var output = Cmd.Execute("docker", command))
             {
                 string response = output.ReadToEnd();
+
                 if (response.StartsWith("/"))
                 {
-                    return response;
+                    return response.TrimEnd(new char[] { '\n' });
                 }
 
                 throw new Exception("Artisan not found");

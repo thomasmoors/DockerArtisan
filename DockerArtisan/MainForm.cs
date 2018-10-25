@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Configuration;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
 
 
 namespace DockerArtisan
@@ -15,11 +14,31 @@ namespace DockerArtisan
             InitializeComponent();
             this.docker = new Docker();
             docker.RetrieveContainers(comboBoxDockerContainer);
-        }       
+        }
+
+        public static string ReplaceLastOccurrence(string Source, string Find, string Replace)
+        {
+            int Place = Source.LastIndexOf(Find);
+            string result = Source.Remove(Place, Find.Length).Insert(Place, Replace);
+            return result;
+        }
 
         private void ComboBoxDockerContainer_SelectedIndexChanged(object sender, EventArgs e)
         {
             docker.container = comboBoxDockerContainer.Text;
+
+            if (!Boolean.Parse(ConfigurationManager.AppSettings.Get("pathDetected")))
+            {
+                DialogResult dialogResult = MessageBox.Show("Shall we detect the location of the artisan file for you?", "You can specify it yourself in the config", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                { 
+                    string path = docker.SearchArtisanPath();
+                    path = ReplaceLastOccurrence(path, "artisan", "");
+                    ConfigurationManager.AppSettings.Set("path", path);
+                    ConfigurationManager.AppSettings.Set("pathDetected", "true");
+                }                    
+            }
+            
             docker.RetrieveArtisanCommands(this.comboBoxArtisanCommand);
             comboBoxArtisanCommand.Enabled = true;
         }
