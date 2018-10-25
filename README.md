@@ -21,3 +21,6 @@ Windows only
 5. Press "RUN" and enjoy.
 
 ![Screenshot](https://i.imgur.com/VGx6cYJ.png)
+
+
+The binary (.exe) can be downloaded here: https://github.com/thomasmoors/DockerArtisan/releases/download/v1.0.0/DockerArtisan.zip
