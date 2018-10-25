@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.comboBoxDockerContainer = new System.Windows.Forms.ComboBox();
             this.comboBoxArtisanCommand = new System.Windows.Forms.ComboBox();
             this.textBoxAdditionalArguments = new System.Windows.Forms.TextBox();
@@ -98,6 +99,7 @@
             this.Controls.Add(this.comboBoxArtisanCommand);
             this.Controls.Add(this.comboBoxDockerContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";
