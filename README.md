@@ -10,7 +10,8 @@ Windows only
         <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6.1" />
     </startup>
   <appSettings>
-    <add key="path" value="/home/medpets/WWW/laravel/"/>
+    <add key="path" value="/var/www/html/"/>
+    <add key="pathDetected" value="false"/>
   </appSettings>
 </configuration>
 ```
