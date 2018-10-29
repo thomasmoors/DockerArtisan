@@ -1,6 +1,8 @@
 Execute [artisan](https://laravel.com/docs/master/artisan) commands inside your docker container through a GUI
 Windows only
 
+Now you no longer have to type those commands exacly the right way. This package was born because it is easy to make typo's and Windows does not have autocomplete for whatever you want to execute in the container.
+
 # Instructions
 1. edit App.config to set the path key to math the Laravel path in your machine.
 ```
